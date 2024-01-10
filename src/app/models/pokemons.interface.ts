@@ -5,7 +5,7 @@
 export interface Pokemon {
     name: string;
     url: string;
-    delete: any;
+    id: number;
 }
 
 

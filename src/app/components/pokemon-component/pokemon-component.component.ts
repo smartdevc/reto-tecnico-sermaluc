@@ -15,7 +15,7 @@ export class PokemonComponent implements AfterViewInit {
 
 
 
-  displayedColumns: string[] = ['name', 'url','delete'];
+  displayedColumns: string[] = ['id','name', 'url','delete'];
   dataSource = new MatTableDataSource<Pokemon>(this.elements);
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -26,7 +26,7 @@ export class PokemonComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  pokemons: any;
+  pokemons: any[];
   elements?: Pokemon[];
   pokemonBuscado:any;
 
@@ -38,10 +38,13 @@ export class PokemonComponent implements AfterViewInit {
     this.pokemonService.getPokemons()
       .subscribe(resp => {
         this.pokemons = resp.results;
+        let i = 1;
+        this.pokemons.forEach( (p:Pokemon)  => {
+          p.id = i;         
+          i++;
+        })
         this.elements = this.pokemons;
-        this.dataSource.data = this.pokemons;
-
-        console.log('this.pokemons',this.pokemons);
+        this.dataSource.data = this.pokemons;        
       });
   }
 
