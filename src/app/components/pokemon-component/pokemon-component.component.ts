@@ -40,6 +40,8 @@ export class PokemonComponent implements AfterViewInit {
         this.pokemons = resp.results;
         this.elements = this.pokemons;
         this.dataSource.data = this.pokemons;
+
+        console.log('this.pokemons',this.pokemons);
       });
   }
 

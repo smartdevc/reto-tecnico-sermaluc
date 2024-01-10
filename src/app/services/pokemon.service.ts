@@ -12,10 +12,9 @@ export class PokemonService {
   constructor(private http : HttpClient) { }
 
   basUrl = environment.url;
-  getAllPath = environment.getAll;
+  getAllPath = environment.getAll;  
 
-  getPokemons(): Observable<Pokemons> {
-   
+  getPokemons(): Observable<Pokemons> {     
     return this.http.get<Pokemons>(this.basUrl+this.getAllPath);
 
   }
